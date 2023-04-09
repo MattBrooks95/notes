@@ -90,5 +90,42 @@
     - here, the 'name' and 'age' arguments are used to specify the data for the new entry
     - because within the brackets we are asking for 'name' and 'age', the information from the new record will be returned to us. In this case it's not very helpful because the client already knows the name and age, but it's possible that we could ask for other fields that the client doesn't know yet
         - the example from howtographql has a mutation that asks for the auto-generated ID of the person, which would be new information to the client
-- streams
+- subscriptions: a client subscribes to an event, and gets a steady connection to the server. When an event occurs, the server sends the data to the client immediately. This is in contrast to the request-response cycle like the examples from earlier.
+    - subscriptions use the same syntax as the queries:
+    ```
+    subscription {
+        newPerson {
+            name
+            age
+        }
+    }
+    ```
+    - if a new mutation that adds a person occurs, the client that used the above subscription to subscribe to the event will be informed by the server as soon as the event occurs
 
+### Schemas
+- a schema is a contract between a server & a client. Usually, schemas are just collections of GraphQL types.
+- there are some special 'root' types, that are the entry points for requests from the client:
+    - type Query { ... }
+    - type Mutation { ... }
+    - type Subscription { ... }
+- an example Query root field that enables the 'allPersons' query example from before looks like:
+    ```
+    type Query {
+        allPersons: [Person!]!
+    }
+    ```
+    - this is called a 'root field' of the API
+- similarly, we'd need to define a mutation as well:
+    ```
+    type Mutation {
+        createPerson(name: String!, age: Int!): Person!
+    }
+    ```
+    - notice how we specified the arguments for 'name' and 'age', that would need to be provided by the client
+- lastly, we add the subscription
+    ```
+    type Subscription {
+        newPerson: Person!
+    }
+    ```
+- I assume in these root fields we can declare several subscriptions, mutations and queries?
