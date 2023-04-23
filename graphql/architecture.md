@@ -14,4 +14,18 @@
         - with a connected database and as an abstraction over third party or legacy systems
 
 ## Resolver Functions
-- every field in a query corresponds to a 'resolver function'
+- every field in a query corresponds to a 'resolver function'. A resolver function is called for each of the fields in the query, which could do any number of tasks necessary to prepare the data that is to be sent back to the client
+- it looks like actually implementing and using graphql requires you to create the resolvers that can handle your schema. I guess this is where the frontend and backend teams would need to communicate (or rather, just when defining the schema)
+
+## Client Libraries
+- graphql client libraries like Appolo and Relay are useful on the frontend because they will do the heavy lifting around getting data from the server for you
+    - Appolo is an open source community project
+    - Relay is facebooks client-side library
+- the client libraries help make the client side code more declarative
+- they can be hooked up with frontend frameworks like React, and according to the tutorial work well with FRP(functional reactive programming, which I want to study anyway)
+- it is not a good idea to cache the results from a graphql query as-is, because the data can be very nested
+    - the article mentions a way to flatten (normalize) the data records and then reference them with an ID, and links to a post by the Apollo team on this subject
+- if the build system for the client-side code is aware of the Graphql schema, it can ensure that the client side code is type safe in regards to the schema at compile time
+
+## Server
+- resume at https://www.howtographql.com/advanced/1-server/
