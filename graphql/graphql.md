@@ -15,7 +15,7 @@
     - the client's request defines the information that it needs, so the endpoint can do the work necessary to grab that information and return it, all from a single endpoint
 
 ### Parts
-- Schema Definition Language
+- Schema Definition Language (SDL)
     - this is used to describe the endpoints, and the return types of their results
     - an example from [howtographql](https://www.howtographql.com/basics/2-core-concepts/)
         ```
