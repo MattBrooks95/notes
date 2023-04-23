@@ -28,4 +28,11 @@
 - if the build system for the client-side code is aware of the Graphql schema, it can ensure that the client side code is type safe in regards to the schema at compile time
 
 ## Server
-- resume at https://www.howtographql.com/advanced/1-server/
+- resolvers are processed in a breadth-first fashion
+- depending on the implementation language, some resolvers can be auto-derived ("default resolvers")
+    - for instance, there is no need to specify a resolver in GraphQl.js if an object has an attribute that matches the field name
+- depending on the query, the same sub-field could need to be fetched several times, even if the data was the same (like the authors for blog posts on a website)
+    - it looks there's some sort of solution where something resembling lazy evaluation can be used to make sure that the same data is only fetched once
+
+## More Concepts
+- resume at https://www.howtographql.com/advanced/2-more-graphql-concepts/
