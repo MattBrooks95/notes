@@ -32,21 +32,31 @@ subject to
     x1,x2 >= 0
 ```
 figure 29.2(a) graphs the three inequalities on a 2d grid, and the intersection of the regions under the lines forms the `feasible region`
+
 you could solve this problem by evaluating the objective function for every discrete point in the feasible region and taking the maximum, but that would be too much computation
+
 also, if you allow non-integer point coordinates than the set of points is infinite
+
 if you choose some z for the equation x1 + x2 = z, and plot that line on the graph, the intersection of that line and the `feasible region` is a list of points that solve the system
+
 in our case, if you plot x1 + x2 = 0, x1 + x2 = 4, and x1 + x2 = 8, you'll get three lines. x1 + x2 = 0 will be a line with a slope of negative 1 through the origin. It's set of points is the single point (0, 0)
+
 if you plot x1 + x2 = 4, there will be another line with slope -1, that goes through the midsection of the feasible region
+
 if you plot x1 + x2 = 8, there will be another line with slope -1, that touches the topmost `vertex` of the feasible region
+
 the optimal z for a solution will give a line segment or a single vertex that touches the feasible region
-if the optimal z gives a single vertex, than that is the single, optimal solution for the system
-if the optimal z gives a line segment, then every point on that line segment has the same objective value
-    they are equivalent, but different, optimal solutions
+- if the optimal z gives a single vertex, than that is the single, optimal solution for the system
+- if the optimal z gives a line segment, then every point on that line segment has the same objective value
+    - they are equivalent, but different, optimal solutions
+
 we can only graph the problem in this way and eyeball the solution because we have limited our solution to only two variables. With more variables, this method is unrealistic
+
 in three dimensions (a problem with 3 variables), the feasible region becomes a 3d shape in space, and the optimal solution becomes a 2d plane that intersects that space
 
 ### The Simplex Algorithm
 the `simplex algorithm` takes as an input a linear program and returns an optimal solution. It starts at some vertex of the simplex and then iterates. At each iteration, it moves along some edge of the simplex towards another vertex whose objective value is no less than the previous vertex's (of course, ideally it would move to a vertex with a higher objective value)
+
 while this only finds a local maximum, because the feasible region is `convex` AND the objective function is linear, that local maximum must be the global maximum
 the simplex method can be fast in practice if you are careful, but on carefully crafted inputs it can become exponential
 
@@ -75,9 +85,13 @@ subject to
     Ax <= b (29.15)
     x >= 0 (29.16)
 ```
+
 29.15 Ax is the m-vector that is the product of an m * n matrix and an n-vector
+
 29.16 means that each value in vector x must be greater than 0 (our non-negativity constraint from earlier)
+
 this is called the `standard form` for a linear program
+
 in real life, some linear programming problems may require variables that can have negative values, and some constraints may need to be equalities (not inequalities). The book says that exercizes 29.1-6 and 29.1-7 ask us to show that such linear programs can be reduced to the standard form
 
 ## Integer Linear Program
