@@ -76,7 +76,7 @@ it is even more convenient to represent the problem as matrices
 suppose we have:
 - an m * n matrix A = (Aij) (note that the A in 'Aij' is a small 'a' in the text, but I can't type subscripts i and j, so I made the 'a' uppercase)
 - an m vector b = (Bi) (note that here, 'an X vector <vector name>' means a vector of size X)
-- an n vector c = (Cj)
+- an n vector c = (Cj)x
 - an n vector x = (Xj)
 then, our problem could be rewritten as:
 ```
@@ -98,6 +98,55 @@ in real life, some linear programming problems may require variables that can ha
 a LP with the additional constraint that all variables take on integer values
 just finding a feasible solution to an ILP is NP-hard
 
+## Formulating Problems as Linear Programs
+examples where linear programming could be used include drilling for oil, where setting the drill at a location has a certain cost, and LP can be used to maximize the profits that can be made within the constraints
+
+another example would be an airline company looking for the most efficient way to crew it's flights given a list of regulatory constraints on the working conditions of the crew
+
+we are going to look at some graph problems through the lens of linear programming
+
+the shortest path weight of a vertex is written d_v (d subscript v), and the flow from vertex u to vertex v is written f_uv (f with subscript uv)
+
+### Single-Source Shortest Paths
+input is a weighted, directed graph G = (V, E) (graph equals a set of vertices V with a set of edges E)
+
+start at edge s, goal is edge t
+
+goal is to find d_t, the weight of a shortest path from s to t
+
+the triangle inequality gives d_v <= d_u + w(u, v) for each edge (u, v) in the set of edges. Here, I think w(u, v) means `the weight of the edge from vertex u to vertex v`
+
+the source vertex, s, receives a weight of 0, which never changes
+
+as a LP, it would be written
+```
+maximize d_t
+subject to
+    d_v <= d_u + w(u, v) for each edge (u, v) in the set of edges E
+    ds = 0
+```
+
+the book states that we really do want to maximize the objective function, and not minimize it, despite the fact that we are looking for a shortest path. It gives some explaination about how setting the weights of all vertices to 0 would give an answer but not actually solve the problem. It's saying that solving where each vertex's shortest weight path is 0 would technically solve the linear program that we are using to model the shortest path problem, but that wouldn't actually be a solution to the shortest path problem.
+
+constraints:
+1. one constraint for each edge
+2. the constraint that the starting edge's shortest-path weight is always 0
+
+### Maximum Flow
+the single-source shortest paths solution isn't useful because we already have Djikstra's algorithm for solving that problem
+
+LP's real power is that it can be used to solve real-world issues whose algorithm may not be written in a book already
+
+the book is stating that the maximum flow problem can be re-cast as a minimum-cost-flow problem, by choosing a target flow and then minimizing for the cost incurred by sending the flow units over a number of nodes in the problem
+
+I'm not sure how this helps me. It says that there are algorithms for the minimum-cost-flow problem, but they won't be covered in this book.
+
+### Multicommodity flow
+the book describes a multicommodity flow problem
+
+it says that the multicommodity flow problem has no objective function, it only asks the question "does a flow that satisfies these constraints exists". So, it has a null objective function
+
+it claims that the only polynomial-time algorithm for this problem uses LP
 
 ## Vocab
 decision variables - variables that represent the decisions to be made in order to solve the problem, these variables will be used to define our `objective function` and our `constraints`
