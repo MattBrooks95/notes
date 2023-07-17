@@ -148,6 +148,18 @@ it says that the multicommodity flow problem has no objective function, it only 
 
 it claims that the only polynomial-time algorithm for this problem uses LP
 
+## Duality
+linear-programming duality is the concept where you create a minimization problem for a specified maximization problem's solution such that the minimization and maximization functions have the same optimal objective values
+
+a dual linear program is the program whose objective is to minimize the objective function and have that minimum be the same as the maximization function's maximum objective value
+
+when referring to a dual linear program, the original linear program is called the `primal`
+
+it then goes into some long proofs
+
+## Fundamental Theorem of Linear Programming
+any linear program in the standard form either 1) has an optimal solution with a finite objective value 2) is infeasible or 3) is unbounded
+
 ## Vocab
 decision variables - variables that represent the decisions to be made in order to solve the problem, these variables will be used to define our `objective function` and our `constraints`
 minimization linear program - a linear programming solution designed to minimize something (like cost of raw materials)
