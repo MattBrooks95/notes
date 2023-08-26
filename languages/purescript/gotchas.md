@@ -7,7 +7,7 @@ In the package.json of the project, I had this line: `  "watch": "spago build --
 ```
 data State = State { nestedState :: { name :: String, age :: Int }
 }
-``
+```
 would make it difficult to use record update syntax. Writing something like
 ```
 initialState = State { nestedState: { name="Matt", age=28 } }
