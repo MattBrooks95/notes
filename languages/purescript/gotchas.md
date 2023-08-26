@@ -16,6 +16,10 @@ let derivedState = initialState { nestedState { age=29 } }
 would cause a type error like
 ![](./record_update.png)
 
+
+I think it's better to use `type` in purescript to describe records
+[terminal log example](./records.txt)
+
 ## Arrays vs Lists
 `[]` declares an array that is compatible with a Javascript array in Purescript, not a List
 It kinda looks like you use Arrays more than Lists in purescript, since the handy syntax `[]` is reserved for arrays. Importing Data.List gives you Haskell-like lists, but maybe they're not used as much as they are in Haskell.

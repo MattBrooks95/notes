@@ -1,0 +1,78 @@
+Script started on 2023-08-26 09:47:25+09:00 [TERM="tmux-256color" TTY="/dev/pts/5" COLUMNS="191" LINES="52"]
+[?2004h[1;32mmotoko[1;31m@[1;32mlemur[1;31m:[1;34m~/projects/kitsunesoft/fps/spreadsheet[0;31m$[0;37m spago repl
+[?2004lPSCi, version 0.15.10
+Type :? for help
+
+import Prelude
+
+> data State = State  ]  { nestedState :: { age :: Int } }
+> :t State
+{ nestedState :: { age :: Int
+                 }           
+}                            
+-> State                     
+
+> myState = State { nestedState: { age: 29 } }
+> newState = myState { nestedState { age/ =30 } }
+Error found:
+in module [33m$PSCI[0m
+at :1:12 - 1:46 (line 1, column 12 - line 1, column 46)
+
+  Could not match type
+  [33m                     [0m
+  [33m  { nestedState :: t0[0m
+  [33m  | t1               [0m
+  [33m  }                  [0m
+  [33m                     [0m
+  with type
+  [33m       [0m
+  [33m  State[0m
+  [33m       [0m
+
+while checking that type [33mState[0m
+  is at least as general as type [33m{ nestedState :: t0[0m
+                                 [33m| t1               [0m
+                                 [33m}                  [0m
+while checking that expression [33m$0[0m
+  has type [33m{ nestedState :: t0[0m
+           [33m| t1               [0m
+           [33m}                  [0m
+in value declaration [33mnewState[0m
+
+where [33mt1[0m is an unknown type
+      [33mt0[0m is an unknown type
+
+See https://github.com/purescript/documentation/blob/master/errors/TypesDoNotUnify.md for more information,
+or to contribute content related to this error.
+
+
+> type StateRecord = { nestedState :: { age :: Int } }
+> :t StateRecord
+Error found:
+in module [33m$PSCI[0m
+at :1:1 - 1:12 (line 1, column 1 - line 1, column 12)
+
+  Unknown data constructor [33mStateRecord[0m
+
+
+See https://github.com/purescript/documentation/blob/master/errors/UnknownName.md for more information,
+or to contribute content related to this error.
+
+
+> myStateRecord = [ { nestedState: { age: 30 } }
+> :t myStateRecord
+{ nestedState :: { age :: Int
+                 }           
+}                            
+
+> myNewStateRecord = myStateRecord { nestedState { age=31 } }
+> myNewStateRecord
+{ nestedState: { age: 31 } }
+
+> :q
+See ya!
+()
+[?2004h[1;32mmotoko[1;31m@[1;32mlemur[1;31m:[1;34m~/projects/kitsunesoft/fps/spreadsheet[0;31m$[0;37m exit
+[?2004lexit
+
+Script done on 2023-08-26 09:49:58+09:00 [COMMAND_EXIT_CODE="0"]
