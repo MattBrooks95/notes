@@ -32,3 +32,6 @@ I assume this gives us some sort of power later where we can use terms other tha
 I didn't know how to do it, and googling it didn't help until I found a stacked overflow post that showed how to use type holes. Does Haskell have this? This is sweet:
 ![](./whatgoeshere.png)
 Oh yeah, the conclusion was Data.Array.fromFoldable
+
+## Getting a value from a select element
+I wanted to use `onChange` at first but that didn't work because it gave me some weird event type that I didn't know how to use (ev.target.value didn't work). You're supposed to use the onValueChange handler, because it just gives you the string of what was selected
