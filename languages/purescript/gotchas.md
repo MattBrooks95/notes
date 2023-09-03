@@ -30,5 +30,5 @@ I assume this gives us some sort of power later where we can use terms other tha
 
 ## Going from a Set to an Array
 I didn't know how to do it, and googling it didn't help until I found a stacked overflow post that showed how to use type holes. Does Haskell have this? This is sweet:
-![](./whatgoeshere)
+![](./whatgoeshere.png)
 Oh yeah, the conclusion was Data.Array.fromFoldable
