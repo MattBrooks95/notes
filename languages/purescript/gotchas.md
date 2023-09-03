@@ -27,3 +27,8 @@ It kinda looks like you use Arrays more than Lists in purescript, since the hand
 ## Complaining About Syntax
 I didn't like this `forall` bit: `renderInputs :: forall w i. M.Matrix String -> Array (HH.HTML w i)`. I assumed that you could leave it out, but it doesn't look like that's the case.
 I assume this gives us some sort of power later where we can use terms other than `forall`, or specify further constraints or something. Whether it's just boilerplate or not remains to be seen
+
+## Going from a Set to an Array
+I didn't know how to do it, and googling it didn't help until I found a stacked overflow post that showed how to use type holes. Does Haskell have this? This is sweet:
+![](./whatgoeshere)
+Oh yeah, the conclusion was Data.Array.fromFoldable
