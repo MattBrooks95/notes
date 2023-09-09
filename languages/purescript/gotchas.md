@@ -38,3 +38,25 @@ I wanted to use `onChange` at first but that didn't work because it gave me some
 
 ## Aff vs Effect
 I thought my main component needed to be in the `Effect` monad for me to be able to test doing IO with the `log` function. I was following [this](https://purescript-halogen.github.io/purescript-halogen/guide/04-Lifecycles-Subscriptions.html) guide that had an example about a random number generator. I think the guide is good, if you copy/paste the guide's code it runs and does exactly what it is supposed to do. But in my case, I was changing the component to try and get it to do other things, and my other code didn't line up with the types in this example. The compiler kept telling me that I have a type error in the `mkDefaultEval` portion, where you register the `initialize` and `finalize` events to be dispatched when the component mounts and dismounts. [This](https://stackoverflow.com/questions/68851266/how-do-you-understand-error-messages-in-purescript) post on stacked overflow about how to understand that type error was really helpful. I had to replace type declarations of Effect with Aff, and also use the `liftEffect` function to get the `log` functions `effect` value into the `Aff` monad. 
+
+## Do notation indentation
+In Haskell I can do:
+```haskell
+myFunc =
+    do
+        x <- ....
+        y <- ....
+        return x + y
+```
+but Purescript complains about indentation in the code below, it looks like the `do` statement can't be on a line on its own, and the code in the `do` has to be indented further in. It looks bad.
+```purescript
+sheetsFromRequestText :: String -> Sheets
+sheetsFromRequestText txt =
+  let parseResult = do
+                      asJson <- parseJson txt
+                      decodeJson asJson
+  in case parseResult of
+    Left e -> []
+    Right shts -> shts
+```
+need to find a better way to write this, I hope people aren't actually indenting like this
