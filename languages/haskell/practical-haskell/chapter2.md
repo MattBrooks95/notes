@@ -52,13 +52,6 @@ Also, writing it in this way is kinda nice, because they become one-liners
     - `(head . tail) x` could be written `head $ tail x`, but function composition is cool
 
 ## Section2
-- used `$stack new Chapter2 new-template` to generate the stack project directory
-- I didn't need to add Chapter2/Section2/Example.hs to the .cabal exposed-modules property, it looks like stack did it for me when I made the file
-- `$stack setup` gives 'error, attribute 'ghc925' is missing, from some sort of Nix file
-- time to figure out how to fix nix...
-    - https://docs.haskellstack.org/en/stable/nix_integration/
-    - this article from Tweag looks to be the best way to do this: https://www.tweag.io/blog/2022-06-02-haskell-stack-nix-shell/
-    - what I did: `$stack ls snapshots --lts remote`, which showed that 19.30 was available, so I changed the last bit of the stack.yaml file's resolver: url: field to match that, and the project built
 - Algebraic Data Types (ADTs) are defined by two pieces of data:
     - a name for the type that will be used to represent its values
     - a set of constructors that can be used to create new values
