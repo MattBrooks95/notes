@@ -1,0 +1,9 @@
+- parametricity - like generics in C# or Java
+    - parametric type: a type that can hold values of any type, like a list []
+    - parametric polymorphism is primarilly achieved in imperative languages like C++ and Java with "Template Types"
+- referential transparency - when you can be sure that the outcome of a function call with the same input arguments will always produce the same result
+    - this is not true for languages that allow processes to have undeclared side effects
+- neutral elements - values that do not contribute anything to a process that accumulates some sort of value
+    - 0 is a 'neutral element' because if used in a sum, it doesn't affect the outcome in any way
+    - 1 + 1 + 1 + 0 is still 3
+    - this is relevant because these 'neutral elements' can be used as the return value of a function that expects a non-empty list but got an empty list passed to it
