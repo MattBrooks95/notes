@@ -7,6 +7,7 @@
     * https://wayland.freedesktop.org/docs/html/ch04.html#sect-Protocol-Basic-Principles
 * Java bindings https://github.com/gfxstrand/wayland-java
 * Python bindings https://github.com/flacjacket/pywayland
+* trying to do Rust bindings to wlroots http://way-cooler.org/blog/2019/04/29/rewriting-way-cooler-in-c.html
 
 ## Haskell Wayland Graveyard
 * https://github.com/Ongy/haskell-wayland
