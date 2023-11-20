@@ -58,4 +58,30 @@ Esqueleto is a library that provides functionality that Persistent doesn't and i
 - when you need to work with a database that has already been built, you can tell persistent what table and columns should be used to line up with the existing database schema
 - you cannot use Integer or Int in Persistent, you must use Int64
 
+### Queries
+- the `get` query functions return you some data wrapped in a Maybe (because you might not find object X that has the Id you specified in your query)
+    - when you have the object's id and you need to look it up you use `get`
+    - when you don't have the object's id and you need to see if it exists or not you have to use a function that makes a Key for you, and then use that Key with `get` to see if you can find your data
+- don't fetch a bunch of data with a query just to take the `length` of the result in code, you should use the `count` function in that case
+- you can ask Persistent to give you query results as a Conduit `source` or as a list
+    - I imagine `source` is nicer for processing a lot of data in a streaming fashion, and the `list` is nicer for every day usage
+- the `selectList` function is the simple one that gets you your data as a list
+    - selectList's second parameter is a list of options, for things like sorting results or only grabbing the first 10 results (offsetBy, limitTo)
+- use Esqueleto
+    - it has nice operators that let you write joins as if you were writing raw squeal
+    - it works well with persistent
+    - you share the schema between persistent and Esqueleto
+    - while you can execute arbitrary squeal with Persistent, you lose your type safety and the benefits you get from using the library disappear
+    - to build a query with Esqueleto, you use the where_ monad w/the do notation. This makes it easy to format the query in a readable way that resembles squeal
+    - you can get performance benefits over just using Persistent because Esqueleto gives you access to inner and outer joins that prevent a bunch of unnecessary round trips to the database
+    - has query helpers like
+        - groupBy_
+		- sum_
+		- min_
+		- max_
+		- avg_
+		- countRows
+    - there is a good example of sorting and grouping on page 404
 
+
+squeal = sql
