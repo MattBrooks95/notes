@@ -85,3 +85,15 @@ Esqueleto is a library that provides functionality that Persistent doesn't and i
 
 
 squeal = sql
+
+### Insertions, Updates and Deletions
+- use `insertUnique` over `insert`, because `insertUnique` returns a Maybe
+    - an insert can fail because of uniqueness constraints, so when it fails, you get a Nothing
+- using `mapM_` to update items in a 'loop' isn't performant because you round trip to the database per-item
+    - do more work per transaction by using `updateWhere`, where you can specify filters and the updates to apply to items that match the filters
+    - use operators like =. - +=. -=. *=. /=.
+    - using Esqueleto gives you more expressive update capabilities
+- `delete` deletes a known item by id
+    - `deleteBy` deletes items that match the specified criteria
+    - `deleteWhere` is like `updateWhere`, which you can use to delete several items at once based on some filters
+- good examples on page 407
