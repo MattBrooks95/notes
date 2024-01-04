@@ -17,3 +17,4 @@
 * apparently you cannot pass a struct to C by value, so you must create a C wrapper function that accepts a pointer, then derefences it and passes that into the original C function
     * https://stackoverflow.com/questions/10903940/haskell-ffi-how-to-handle-c-functions-that-accept-or-return-structs-instead-of
     * this post is really old, this may have changed
+* on nested structs, I asked Reddit for help it was very informative [link](https://www.reddit.com/r/haskell/comments/18y0f8g/writing_haskell_bindings_for_nested_anonymous/)
