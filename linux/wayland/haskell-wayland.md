@@ -14,3 +14,6 @@
     * there's [an example](https://github.com/BurningWitness/vulkan/blob/develop/vulkan-raw/src-gen/Vulkan/Ext/VK_AMD_display_native_hdr.hsc) of using pattern synonyms for C constants instead of newtypes
 * there is a vlog about the best practices for using the FFI [link](https://www.haskell.org/ghc/blog/20210709-capi-usage.html)
     * notably, it reiterates that we should use `CApiFFI` instead of `ccall`
+* apparently you cannot pass a struct to C by value, so you must create a C wrapper function that accepts a pointer, then derefences it and passes that into the original C function
+    * https://stackoverflow.com/questions/10903940/haskell-ffi-how-to-handle-c-functions-that-accept-or-return-structs-instead-of
+    * this post is really old, this may have changed
