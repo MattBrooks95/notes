@@ -15,3 +15,4 @@
 ## Gotchas
 * if you're debugging a flake that doesn't want to build, and you're frequently making small changes and doing `$ nix develop`, there's a chance that your nesting direnv shells every time you do it. Eventually, some direnv stuff will get too long and terminal commands will start to fail because of the argument list (to something) being too long
     * I got out of it by `$ exit`ing several times until I made it out of the nested sessions
+    * you can check how deep your shell is with `$ echo SHLVL`
