@@ -23,3 +23,10 @@
     extra-libraries:
       - wlroots
     ```
+* If you need to make local C header files (files that would git included directly or indirectly like this `#include "my_c_stuff_blah_blah_blah.h`), you can tell Cabal about them with the `include-headers:` directive, like this:
+```cabal
+library
+    include-dirs:
+        protocol-headers
+```
+where `protocol-headers` would be a path to a directory that contains the local C header files
