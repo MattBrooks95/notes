@@ -13,3 +13,4 @@
     - remember to use the "ssh format" when you clone from GitHub
         - the HTTP way was `$ git clone http://www.github.com/<user>/<repository>`
         - for SSH auth to work, you need to do `$ git clone git@github.com:<user>/<repository>`
+        - if you have a project directory that already has the origin set with an HTTP URL, you will need to use `$ git remote remove <remote>` to remove the old one and then use `$ git remote add <local name of remote> <remote ssh URL>` to add the origin in a way that works with SSH
