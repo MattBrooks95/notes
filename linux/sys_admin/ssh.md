@@ -11,3 +11,4 @@ in the `/etc/nixos/configuration.nix` file, there'll be a commented out attribut
 - use `$ ssh-copy-id -i <pubkey> <serverside username>@<serverhostname>` copy the PUBLIC key (ends in .pub) to the server
     - you will be prompted for the user's password
     - after it succeeds, you can log in with `$ ssh <user>@<host>`
+- use `$ ssh-add <path-to-PRIVATE-key>` to add the key to the ssh agent so that you don't need to authenticate everytime
