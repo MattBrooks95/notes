@@ -13,6 +13,14 @@ Supported capabilities:
 ```
 - for now, just use `$ nix-shell -p headsetcontrol`, I don't think I'll use this often enough to put it in the NixOS or Home Manager configuration
 - `$ headsetcontrol --capabilities` to list what configurations the tool supports
+- turn off the inactive time (to see if it will stop shutting down mid live stream)
+`$ headsetcontrol -i 0`
+
+```
+Found SteelSeries Arctis 9!
+Successfully set inactive time to 0 minutes!
+Success!
+```
 
 ## Addin Udev rules
 - without this some commands will fail
