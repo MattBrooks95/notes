@@ -15,7 +15,7 @@ loggingMiddleware innerApp request respond = do
 The idea is to match a path and then rewrite it.
 
 ### Static Files Middleware
-rewrite a request who's path begins with "assets" such that the server looks into the `pubilc` directory. Note that the default static middleware disables caching, and should have defaults that prevent paths like "../" that would be security concerns. This prevents malicious URLs from reading files inside of folders that it shouldn't have access to. 
+rewrite a request who's path begins with "assets" such that the server looks into the `public` directory. Note that the default static middleware disables caching, and should have defaults that prevent paths like "../" that would be security concerns. This prevents malicious URLs from reading files inside of folders that it shouldn't have access to. 
 
 Note that you match on the "absolute" url, but you need to return a `Just` that is the local path so that the server can find the file.
 
