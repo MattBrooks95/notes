@@ -21,8 +21,9 @@ You must validate JWSTs on your server if they come from public clients (which y
 [Google has a guide for this](https://developers.google.com/identity/openid-connect/openid-connect#validatinganidtoken)
 
 # JWT Libraries
+## Server Side
 comprehensive list [here](https://jwt.io/libraries)
-I'm going to try [jose](https://github.com/panva/jose), because the [bundle size](https://bundlephobia.com/package/jose@5.7.0) is significantly smaller than jsrasign
+[jose](https://github.com/panva/jose), has a significantly smaller [bundle size](https://bundlephobia.com/package/jose@5.7.0) than jsrasign
 
 
 references:
