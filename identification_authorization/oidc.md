@@ -24,7 +24,10 @@ You must validate JWSTs on your server if they come from public clients (which y
 ## Server Side
 comprehensive list [here](https://jwt.io/libraries)
 [jose](https://github.com/panva/jose), has a significantly smaller [bundle size](https://bundlephobia.com/package/jose@5.7.0) than jsrasign
+## Client Side
+I imagine platforms like Android or IOS probably have built-in libraries, but Javascript has libraries like [oidc-client-ts](https://github.com/authts/oidc-client-ts/tree/main)
 
+This library looks small and uses browser APIs with no dependencies: [oauth2-client](https://github.com/badgateway/oauth2-client). It doesn't have oidc features because the [code necessary to deal with the jwts would bloat the library considerably](https://github.com/badgateway/oauth2-client/pull/131)
 
 references:
 [use Google OIDC](https://developers.google.com/identity/openid-connect/openid-connect#python)
