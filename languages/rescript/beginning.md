@@ -10,3 +10,34 @@
     - I *could* start learning Rescript with just this, but figuring out the editor integration would be nicer.
 - I'm thinking I might try and make a flake that builds the rescript language serer from source, and then I can install it into my project flakes.
     - if I actually got it to work, I could try putting it into nixpkgs
+
+# Input Elements
+I'd like to learn a less verbose way to get the string from a text input in the onChange handler.
+```rescript
+	let (userName, setUserName) = React.useState(_ => "")
+	let (password, setPassword) = React.useState(_ => "")
+	<Frame>
+	<div>
+		<div>{React.string("Login")}</div>
+		<label>{React.string("Account Name:")}
+			<input type_="text"
+				defaultValue=userName
+				onChange={(evt: JsxEvent.Form.t) => {
+					let targ = evt->JsxEvent.Form.target
+					let val = targ["value"]
+					setUserName(_ => val)
+				}}
+			/>
+    ...
+```
+
+# Gotchas
+## External
+I was trying to make bindings to [a Typescript library](https://github.com/authts/oidc-client-ts) and I had a hell of a time trying to figure out why the generated Javascript caused runtime errors.
+```rescript
+type user
+type oidcManager
+
+@new @module external userManager: unit => oidcManager = "UserManager"
+```
+Where 'UserManager' is the name of a module and a class in the package. The JS that Rescript would create would have an import statement like `import * from "UserManager"`, and Vite wouldn't be able to find that Javascript dependency. The problem is that I needed to specify the package name as well, which can be done with the string argument to the `@module` decorator when you write the FFI bindings.
