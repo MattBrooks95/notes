@@ -20,6 +20,9 @@ For my purposes (making SaaS tools and games), the bare minimum claims to ask fo
 You must validate JWSTs on your server if they come from public clients (which your SPA will be)
 [Google has a guide for this](https://developers.google.com/identity/openid-connect/openid-connect#validatinganidtoken)
 
+# Provider
+The identity provider is the web service that does the authentication. The client will direct users who are not logged in to the provider, and send it a `redirect_uri`, a link that the provider will send the user to when authorization is done. This is how they get back to the client after finishing their authentication. Here, the server should return a 302 'found' status code, and all of the required fields for the flow being used.
+
 # JWT Libraries
 ## Server Side
 comprehensive list [here](https://jwt.io/libraries)
@@ -31,3 +34,6 @@ This library looks small and uses browser APIs with no dependencies: [oauth2-cli
 
 references:
 [use Google OIDC](https://developers.google.com/identity/openid-connect/openid-connect#python)
+
+## Configuration Info
+There is a configuration endpoint for providers at `.well-known/openid-configuration` that will describe which parts of the spec the provider implements. [This has an example](https://help.akana.com/content/current/cm/api_oauth/oauth_discovery/m_oauth_getOpenIdConnectWellknownConfiguration.htm), and you can even hit [Google's endpoint directly to see their real configuration](https://accounts.google.com/.well-known/openid-configuration)
