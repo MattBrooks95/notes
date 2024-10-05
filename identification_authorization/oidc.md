@@ -2,9 +2,17 @@
 
 OpenID Connect is a protocol that uses oath2.0 to also confirm the identity of the user, in addition to authorizing the service providers app to ask information about the user signing up.
 
+# Docs
+[Oidc spec](https://openid.net/specs/openid-connect-core-1_0.html#rnc)
+
+"4. Initiating Login from a Third Party" looks like it might be useful to make the flow a bit nicer. The RP can send to the OP an email address or other contact information to hint to the OP which account the user should login with.
+
+Terms:
+OP - OpenId Provider
+RP - Relying Party - OAuth2.0 Client application that needs user authentication and claims from the OP
+
 # Network Protocol
 OIDC always uses HTTPS (though, if you make a mock for local development http is fine), because the tokens mustn't be transferred in plain text over the network
-
 
 # Claims
 Claims are basically how you tell the authorization provider which pieces of information you want.
