@@ -35,6 +35,9 @@ The identity provider is the web service that does the authentication. The clien
 ## Server Side
 comprehensive list [here](https://jwt.io/libraries)
 [jose](https://github.com/panva/jose), has a significantly smaller [bundle size](https://bundlephobia.com/package/jose@5.7.0) than jsrasign
+
+[This document is very helpful](https://www.authlete.com/developers/pkce/) because it explained to me how the identity provider server can store the code challenge and know which code challenge to use to verify the code verifier when the request comes to the `/token` endpoint. I couldn't find any parameters that could uniquely identify a requesting client and user pair, but the documentation points out that you can just store the code challenge with the authorization code. Then, when they send the authorization code to the `/token` endpoint, we'll have the code challenge stored with that authorization code that the server created. I was stuck but I think I can move forward now.
+
 ## Client Side
 I imagine platforms like Android or IOS probably have built-in libraries, but Javascript has libraries like [oidc-client-ts](https://github.com/authts/oidc-client-ts/tree/main)
 
@@ -45,3 +48,5 @@ references:
 
 ## Configuration Info
 There is a configuration endpoint for providers at `.well-known/openid-configuration` that will describe which parts of the spec the provider implements. [This has an example](https://help.akana.com/content/current/cm/api_oauth/oauth_discovery/m_oauth_getOpenIdConnectWellknownConfiguration.htm), and you can even hit [Google's endpoint directly to see their real configuration](https://accounts.google.com/.well-known/openid-configuration)
+
+For PKCE, the server can tell clients that it supports the "plain" or "S256" methods. For a local development identity provider, "plain" could be useful to avoid needing to make RSA key pairs.
