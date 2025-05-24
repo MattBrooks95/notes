@@ -13,6 +13,7 @@ List permissions for user 'default'
 
 ## PubSub
 ### Permissions
+ It was giving me an error message about not having permissions to subscribe to pubsub channels. I guess recent versions of valkey/redis default to users having access to no channels by default.
 Add pub sub channel permissions
 `$ ACL setuser default &*
 
