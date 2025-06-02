@@ -11,6 +11,16 @@ Become admin
 List permissions for user 'default'
 `$ ACL getuser default`
 
+# 'Testing' With the CLI
+You can type `$ subscribe <channel name>` to enter a little loop in the Valkey cli that will show you messages published to a channel.
+
+The output will look like this. The 'message from the game orchestrator' message is the message that my application sent.
+```
+2) "updates:14a8f980-c886-4768-8979-61eee3681655"
+3) "message from the game orchestrator, posting to game update channel:updates:14a8f980-c886-4768-8979-61eee3681655"
+Reading messages... (press Ctrl-C to quit or any key to type command)
+```
+
 ## PubSub
 ### Permissions
  It was giving me an error message about not having permissions to subscribe to pubsub channels. I guess recent versions of valkey/redis default to users having access to no channels by default.
