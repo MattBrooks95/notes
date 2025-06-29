@@ -1,0 +1,4 @@
+## Initial Learnings
+- `threadDelay` is useful for slowing down the output of an infinite loop. `timeout` is not, I don't think it blocks the thread that called it. I have some code where if I have an infinite loop (trying to process pubsub messages), the thread will get blocked if I don't have a `threadDelay` call, and all of the server's functions stop working because the loop is hogging the CPU.
+    - I don't know if I'm *supposed* to do this, but `yield` tells GHC to let other threads run, and adding `yield` (instead of doing `threadDelay`) in the game manager loop allowed it to stop blocking other API endpoins.
+- The Hackage documentation recommends the usage of `withAsync`, but I think that's more for when you have a process that you know is going to accomplish something and finish. If you need an infinite event loop for processing pubsub messages, something else (I'm tring `forkIO` now) should be used.

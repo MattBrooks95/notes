@@ -21,6 +21,9 @@ For my purposes (making SaaS tools and games), the bare minimum claims to ask fo
 - email - just the user's email address
 - email_verified - a boolean indicating whether or not the user's email address has been validated
 
+[5.7 Claim Stability and Uniqueness](https://openid.net/specs/openid-connect-core-1_0.html#ClaimStability)
+The only way for the RP (Relying Party, or "your server side application that needs to authenticate users") to ensure that a user is uniquely identified is a combination of the `iss` (issuer) and sub (subject) claims. I guess this could just be a naive string concatenation. This ensures that two users from two different identity providers that have the same subject identifier can still be uniquely identified, because they'll have a different issuer value.
+
 # Getting the user's email
 [try here](https://developers.google.com/identity/openid-connect/openid-connect#obtaininguserprofileinformation)
 
