@@ -14,6 +14,13 @@ Unfortunately seems to cause a lengthy recompile of all of the application's com
 
 I'm really confused because `$ cabal build web-backend --enable-profiling --enable-library-profiling --enable-executable-profiling` will cause it to rebuild and I see Cabal acknowledging the `--enable-profiling` flag, but then when I try to run it with `$ cabal run web-backend +RTS -pj -RTS` it says that the app needs to be built with the `-prof` flag. Maybe the GHC version and Cabal don't work well together?
 
+`./dist-newstyle/build/x86_64-linux/ghc-9.6.6/web-backend-0.1.0.0/x/web-backend/build/web-backend/web-backend +RTS -pj -RTS <args here>` will cause it to run and generate `web-backend.prof`, but the file contents are empty. Maybe it's because I had to kill the program with ^C?
+
+`sigint` is ^C I guess. I interrupted it twice with HTOP and the `web-backend.prof` file was empty. Something about it being multithreaded means nothing is getting profiled?
+
+Simon Marlow's Parallel and Concurrent Programming In Haskell book talks about a profiling tool Threadscope, but I don't think it's a threads issue. I think one of the threads is infinite looping and hogging an entire CPU core.
+
+
 
 ## Run With Profiling
 I'm going to try a script that looks like this. The parts that I added to try and run a web server with profiling is the `+RTS -pj -RTS` section. All of the parameters after the `--` are parameters to the application itself.
