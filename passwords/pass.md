@@ -35,3 +35,8 @@ I installed [Android Password Store](https://github.com/android-password-store/A
 It didn't work. There was some error from OpenKeyChain. The 'latest' release from APS was from 2021, so installed the nightly. It still didn't work but gave me a better error message. GnuPG has some sort of non-standard feature that APS doesn't support, so it had me re-encrypt all my keys with another pgp key (I had to generate a dummy one) to get `$ pass init <dummy id>` to actually re-encrypt the passwords. Then, do `$ pass init <actual id>` to re-re-encrypt them with the fixed pgp key. Then, updating the password repository and synching the repository on my phone got it to work.
 
 [how to 'fix' the GnuPG issue](https://docs.passwordstore.app/docs/users/common-issues/#gnupg-aead-encryption-2974-2963-2921-2924-2653-2461-2586-2179)
+
+## Moving GPG Key To Android Devices
+MTPfs is the mobile transfer protocol file system. There is a nix pkg 'android-file-transfer' that will allow you to mount an Android device like you would a usb drive. You can then use linux commands on the main pc to send files to the phone.
+
+When I tried it recently, I needed to use a usb-c to usb-c cable, usb-a (computer) to usb-c (phone) did not work.
